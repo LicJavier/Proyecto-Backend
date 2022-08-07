@@ -66,7 +66,6 @@ class Productos{
             return [];
         }
     };
-
 }
 
 // El método save incorporará al producto un id numérico, que deberá ser siempre uno más que el id del último objeto agregado (o id 1 si es el primer objeto que se agrega) y no puede estar repetido.
@@ -83,6 +82,7 @@ async function init() {
     // console.log(await productos.getById(9))
     // console.log(await productos.getById(3))
     // console.log(await productos.deleteAll());
-    console.log(await productos.deleteById(3));
+    // console.log(await productos.deleteById(3));
 }
 init();
+module.exports = Productos;
