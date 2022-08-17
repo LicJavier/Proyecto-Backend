@@ -1,36 +1,37 @@
+//----------------------------------------------------------------------------------------------
+//------------------------------------MODULOS---------------------------------------------------
+//----------------------------------------------------------------------------------------------
 const express = require('express');
-const Productos = require("./manejoDeArchivos.js")
-
+const morgan = require('morgan');
+//----------------------------------------------------------------------------------------------
+//-------------------------INSTANCIA DE SERVER--------------------------------------------------
+//----------------------------------------------------------------------------------------------
 const app = express();
+const routerProductos = require('./src/routes/productos.routes.js')
+//----------------------------------------------------------------------------------------------
+//------------------------------MIDDLEWARES-----------------------------------------------------
+//----------------------------------------------------------------------------------------------
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(morgan('tiny'));
+app.use(express.static( 'public' ));
+//----------------------------------------------------------------------------------------------
+//------------------------------RUTAS-----------------------------------------------------------
+//----------------------------------------------------------------------------------------------
+app.use('/api/productos', routerProductos);
 
-const productos = new Productos("./DB/productos.txt");
-
-function random(min, max) {
-    let resultado = Math.floor((Math.random() * (max - min + 1)) + min);
-    return resultado
-}
-
-app.get('/', (req, res)=>{
-    res.send("Bienvenidos las rutas son: /productos o /productoRandom");
+//----------------------------------------------------------------------------------------------
+//---------------------------------------SERVIDOR-----------------------------------------------
+//----------------------------------------------------------------------------------------------
+const PORT = 8080;
+const server = app.listen(PORT, ()=>{
+    console.log(`escuchando en ${PORT}`)
 })
+server.on('error', error=>{
+    console.error(`Error en el servidor${error}`);
+});
+// function random(min, max) {
+//     let resultado = Math.floor((Math.random() * (max - min + 1)) + min);
+//     return resultado
+// }
 
-app.get('/productos', async ( req , res )=>{
-    res.send(await productos.getAll());
-}
-);
-
-app.get('/productoRandom', async ( req , res )=>{
-    res.send(await productos.getById(random(0,6)));
-}
-);
-app.get('*', ( req , res )=>{
-    res.send("Error 404:    Página no encontrada D:");
-}
-);
-
-const port = 8080;
-
-const server = app.listen(port, ()=> {
-    console.log(`Server on http://localhost:${port}`)
-}
-)

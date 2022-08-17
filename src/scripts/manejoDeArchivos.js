@@ -66,6 +66,19 @@ class Productos{
             return [];
         }
     };
+    async putObject(object , id){
+        //Number - Recibe un objeto y un id, lo guarda en el archivo.
+        try {
+            const guardar = await this.getAll();
+            guardar.splice(guardar.findIndex(e=>e.id==id),1)
+            const objetoNuevo = {id: id, ...object};
+            guardar.push(objetoNuevo);
+            await fs.writeFile(this.ruta, JSON.stringify(guardar, null,2))
+            return objetoNuevo;
+        } catch (error) {
+            return [];
+        }
+    };
 }
 
 // El método save incorporará al producto un id numérico, que deberá ser siempre uno más que el id del último objeto agregado (o id 1 si es el primer objeto que se agrega) y no puede estar repetido.
@@ -84,5 +97,5 @@ async function init() {
     // console.log(await productos.deleteAll());
     // console.log(await productos.deleteById(3));
 }
-init();
+// init();
 module.exports = Productos;

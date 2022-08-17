@@ -24,13 +24,13 @@
     "img": "https://drive.google.com/file/d/1MZM-iGQxnIMR9dgqZImxzae4dI3DHWT4/view?usp=sharing"
   },
   {
-    "id":3,
-    "categoria":"mandalas",
-    "name":"celebra la vida",
-     "price":"2000",
-     "stock":5,
-     "img":"https://drive.google.com/file/d/1fg554Mi61Mj8TDni7p-LDzBEoKMnTVv6/view?usp=sharing"
-     },
+    "id": 3,
+    "categoria": "mandalas",
+    "name": "celebra la vida",
+    "price": "2000",
+    "stock": 5,
+    "img": "https://drive.google.com/file/d/1fg554Mi61Mj8TDni7p-LDzBEoKMnTVv6/view?usp=sharing"
+  },
   {
     "id": 4,
     "categoria": "atrapasueños",
