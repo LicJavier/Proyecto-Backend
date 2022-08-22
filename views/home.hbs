@@ -1,0 +1,25 @@
+    {{#if DB_PRODUCTOS}}
+        <div >
+            <table class="table-auto m-10 text-2xl bg-green-400 ">
+                <thead>
+                    <tr class="p-5 m-5 ">
+                        <td class="p-5 font-mono text-3xl">Nombre</td>
+                        <td class="p-5 font-mono text-3xl">Precio</td>
+                        <td class="p-5 font-mono text-3xl">Imagen</td>
+                    </tr>
+                </thead>
+                {{#each DB_PRODUCTOS}}
+                <tbody>
+                    <tr>
+                        <td class="p-5 font-mono text-3xl">{{this.name}}</td>
+                        <td class="p-5 font-mono text-3xl">$ {{this.price}}</td>
+                        <td class="p-5 font-mono text-3xl"><img width="100px" height="100px" src={{this.img}} alt=""></td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    {{else}}
+        <h3 class="font-mono text-center text-3xl p-8 ">No se encontraron productos</h3>
+    {{/if}}
+

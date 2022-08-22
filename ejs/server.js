@@ -2,7 +2,6 @@
 //------------------------------------MODULOS---------------------------------------------------
 //----------------------------------------------------------------------------------------------
 const express = require('express');
-const expressHandlebars = require('express-handlebars');
 const morgan = require('morgan');
 const path = require('path');
 
@@ -16,7 +15,7 @@ const app = express();
 //------------------------------MIDDLEWARES-----------------------------------------------------
 //----------------------------------------------------------------------------------------------
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 // app.use(express.static( 'public' ));
@@ -24,14 +23,8 @@ app.use(morgan('tiny'));
 //----------------------------------------------------------------------------------------------
 //---------------------------------MOTOR DE PLANTILLA-------------------------------------------
 //----------------------------------------------------------------------------------------------
-app.engine('hbs', expressHandlebars.engine({
-    defaultLayout: 'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),
-    extname: 'hbs'
-}));
 app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 // app.use('/api/productos', routerProductos);
 
 //----------------------------------------------------------------------------------------------
@@ -46,10 +39,10 @@ const DB_PRODUCTOS = [/*{
 //----------------------------------------------------------------------------------------------
 //-------------------------------------RUTAS----------------------------------------------------
 //----------------------------------------------------------------------------------------------
+
 app.get('/productos', (req, res)=>{
     res.render('home', {DB_PRODUCTOS} );
 })
-
 app.post('/productos', (req, res)=>{
     DB_PRODUCTOS.push(req.body);
     res.redirect("/productos")
