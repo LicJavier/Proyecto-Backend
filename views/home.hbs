@@ -1,3 +1,24 @@
+    <main class="flex flex-col  items-center bg-cyan-500  m-0">
+        <h1 class="font-mono font-extrabold text-5xl m-5 p-5 " >Bienvenido a tu tienda</h1>
+        <h2 class="text-3xl font-bold font-mono underline m-4">
+            Ingresa tu Producto
+        </h2>
+        <form action="/productos" method="post" class="flex justify-center flex-col items-center m-4">
+            <label class="flex flex-row justify-center p-2 m-2 w-72 font-mono shadow-md border-solid border-2 border-emerald-800 rounded-2xl text-2xl bg-emerald-400" for="">
+                Nombre del producto
+            </label>
+            <input type="text" name="name" class="shadow-md text-center font-mono text-2xl rounded-2xl border-solid border-2 border-emerald-800 bg-green-400">
+            <label class="flex flex-row justify-center p-2 m-2 w-72 font-mono shadow-md border-solid border-2 border-emerald-800 rounded-2xl text-2xl bg-emerald-400" for="">
+                Precio
+            </label>
+            <input type="text" name="price" class="shadow-md text-center text-2xl font-mono rounded-2xl border-solid border-2 border-emerald-800 bg-green-400">
+            <label class="flex flex-row justify-center p-2 m-2 w-72 shadow-md font-mono border-solid border-2 border-emerald-800 rounded-2xl text-2xl bg-emerald-400" for="">
+                URL de la Imagen
+            </label>
+            <input type="text"  name="img" class="shadow-md text-center text-2xl font-mono rounded-2xl border-solid border-2 border-emerald-800 bg-green-400">
+            <button id="button" class="border-solid border-2 border-sky-500 bg-gradient-to-r from-blue-700 to-purple-600 font-mono m-6 p-2 shadow-md ">Cargar Producto</button>    
+        </form>    
+        <h2 class="font-mono font-extrabold text-5xl ">Historial de Productos Agregados</h2>
     {{#if DB_PRODUCTOS}}
         <div >
             <table class="table-auto m-10 text-2xl bg-green-400 ">
@@ -13,7 +34,7 @@
                     <tr>
                         <td class="p-5 font-mono text-3xl">{{this.name}}</td>
                         <td class="p-5 font-mono text-3xl">$ {{this.price}}</td>
-                        <td class="p-5 font-mono text-3xl"><img width="100px" height="100px" src={{this.img}} alt=""></td>
+                        <td class="p-5 font-mono text-3xl"><img width="100px" height="100px" src={{this.img}} alt="logo producto"></td>
                     </tr>
                 </tbody>
                 {{/each}}
@@ -22,4 +43,7 @@
     {{else}}
         <h3 class="font-mono text-center text-3xl p-8 ">No se encontraron productos</h3>
     {{/if}}
-
+    {{> webchat}}
+    </main>
+    {{> footer}}
+    

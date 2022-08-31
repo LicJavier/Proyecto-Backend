@@ -1,0 +1,19 @@
+<div>
+    <form action="" class="flex flex-col  items-center bg-cyan-500 p-4">
+        <label for="user" class="font-mon">Email</label>
+        <input type="email" id="user">
+        <label class="font-mono">Deja tu mensaje</label>
+        <input type="text" id="contenidoMensaje" >
+        <button id="enviar" class="border-solid border-2 border-sky-500 bg-gradient-to-r from-blue-700 to-purple-600 font-mono m-6 p-2 shadow-md">Enviar Mensaje</button>
+    </form>
+    <p class="font-mono" >Desde el Servidor: <span id="mensajeRecibido"></span></p>
+    <div class="p-5 m-5 bg-white ">
+        <p class="font-mono" id="historial">
+            {{#each DB_PRODUCTOS}}
+                <span><b class="text-blue-600 font-bold" >${this.author}: </b>
+                <span class="text-amber-800">${this.hora} </span>
+                <span class="italic text-green-700">${this.mensaje}</span></span>
+            {{/each}}
+        </p>
+    </div>
+</div>
