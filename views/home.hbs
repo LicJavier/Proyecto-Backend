@@ -19,7 +19,7 @@
             <button id="button" class="border-solid border-2 border-sky-500 bg-gradient-to-r from-blue-700 to-purple-600 font-mono m-6 p-2 shadow-md ">Cargar Producto</button>    
         </form>    
         <h2 class="font-mono font-extrabold text-5xl ">Historial de Productos Agregados</h2>
-    {{#if DB_PRODUCTOS}}
+    {{#if producto}}
         <div >
             <table class="table-auto m-10 text-2xl bg-green-400 ">
                 <thead>
@@ -29,7 +29,7 @@
                         <td class="p-5 font-mono text-3xl">Imagen</td>
                     </tr>
                 </thead>
-                {{#each DB_PRODUCTOS}}
+                {{#each producto}}
                 <tbody>
                     <tr>
                         <td class="p-5 font-mono text-3xl">{{this.name}}</td>
